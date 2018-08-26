@@ -1,4 +1,4 @@
-It's a working tweeter like project.
+It's a working tweeter-lite clone.
 
 Basic functionality has been implemented.
 You can register new users and log in as an existing user, while all necessary fields are validated.
