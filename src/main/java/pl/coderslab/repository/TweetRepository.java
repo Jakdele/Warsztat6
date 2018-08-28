@@ -10,7 +10,7 @@ import pl.coderslab.entity.User;
 import java.util.List;
 
 public interface TweetRepository extends JpaRepository<Tweet, Integer> {
-    List<Tweet> findAllByUser(User user);
+    List<Tweet> findAllByUserOrderByCreatedDesc(User user);
 
     List<Tweet> findAllByUserId(int userId);
 

@@ -1,6 +1,7 @@
 package pl.coderslab.entity;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -24,7 +25,7 @@ public class Tweet {
 
 
     @Size(max = 140)
-    @NotNull
+    @NotBlank
     private String text;
 
     @Temporal(TemporalType.TIMESTAMP)

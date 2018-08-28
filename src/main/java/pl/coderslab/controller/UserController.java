@@ -29,22 +29,22 @@ public class UserController {
     @GetMapping("/tweets")
     public String userTweets(HttpSession sess, Model model){
         User currentUser = (User) sess.getAttribute("user");
-        List<Tweet> userTweets = tweetRepository.findAllByUser(currentUser);
+        List<Tweet> userTweets = tweetRepository.findAllByUserOrderByCreatedDesc(currentUser);
         model.addAttribute("userTweets", userTweets);
         return "user/user_tweets";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editForm(@PathVariable int id, Model model){
-        User user = userRepository.findOne(id);
+    @GetMapping("/edit")
+    public String editForm( Model model,HttpSession sess){
+        User user = (User) sess.getAttribute("currentUser");
         model.addAttribute("user", user);
-        return "forms/register";
+        return "forms/user_edit";
 
     }
-    @PostMapping("/edit/{id}")
+    @PostMapping("/edit")
     public String editUser(@Valid User user, BindingResult result, HttpSession sess){
         if(result.hasErrors()){
-            return "forms/register";
+            return "forms/user_edit";
         }
         String testPassword  = userRepository.findOne(user.getId()).getPassword();
         if(user.getPassword()!=testPassword) {
@@ -58,7 +58,7 @@ public class UserController {
     @RequestMapping("/details/{id}")
     public String userDetails(@PathVariable int id, Model model){
         User showcasedUser = userRepository.findOne(id);
-        List<Tweet> tweets = tweetRepository.findAllByUserId(id);
+        List<Tweet> tweets = tweetRepository.findAllByUserOrderByCreatedDesc(showcasedUser);
         model.addAttribute("showcasedUser", showcasedUser);
         model.addAttribute("tweets", tweets);
         return "user/user_details";

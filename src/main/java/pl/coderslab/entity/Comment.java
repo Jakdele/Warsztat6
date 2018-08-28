@@ -1,5 +1,7 @@
 package pl.coderslab.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -18,7 +20,7 @@ public class Comment {
     private Tweet tweet;
 
     @Size(max = 60)
-    @NotNull
+    @NotBlank
     private String text;
 
     @Temporal(TemporalType.TIMESTAMP)

@@ -40,4 +40,9 @@ public class TweetController {
         model.addAttribute("comment", new Comment());
         return "tweet/tweet_details";
     }
+
+    @ModelAttribute("tweets")
+    public List<Tweet> tweets() {
+        return tweetRepository.findAllSorted();
+    }
 }
