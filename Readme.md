@@ -1,4 +1,4 @@
-It's a working tweeter-lite clone.
+It's a working twitter-lite clone.
 
 Basic functionality has been implemented.
 You can register new users and log in as an existing user, while all necessary fields are validated.
