@@ -9,9 +9,9 @@ import java.util.List;
 
 
 public interface MessageRepository extends JpaRepository<Message, Integer> {
+
     List<Message> findAllBySenderIdOrderByCreatedDesc(int id);
+
     List<Message> findAllByReceiverIdOrderByCreatedDesc(int id);
 
-//    @Query("SELECT m from Message m join m.receiver u where u.id = :id")
-//    List<Message> getAllBySender(@Param("id") int userId);
 }

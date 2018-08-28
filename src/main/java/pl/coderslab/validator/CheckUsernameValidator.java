@@ -22,8 +22,8 @@ public class CheckUsernameValidator implements ConstraintValidator<CheckUsername
     }
 
     public boolean isValid(String username, ConstraintValidatorContext context) {
-           User user =  userRepository.findFirstByUsername(username);
-           User currentUser = (User) session.getAttribute("currentUser");
+        User user = userRepository.findFirstByUsername(username);
+        User currentUser = (User) session.getAttribute("currentUser");
         return CheckEmailValidator.checkIfExists(user, currentUser);
     }
 }

@@ -7,7 +7,9 @@ import pl.coderslab.entity.Tweet;
 import java.util.List;
 
 public interface CommentRepository extends JpaRepository<Comment, Integer> {
-    List<Comment> findAllByTweetOrderByCreatedDesc (Tweet tweet);
-    List<Comment> findAllByTweetIdOrderByCreatedDesc (int tweetId);
+
+    List<Comment> findAllByTweetOrderByCreatedDesc(Tweet tweet);
+
+    List<Comment> findAllByTweetIdOrderByCreatedDesc(int tweetId);
 
 }

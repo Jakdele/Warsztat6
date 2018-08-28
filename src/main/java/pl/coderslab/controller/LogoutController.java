@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 public class LogoutController {
 
     @GetMapping("/logout")
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
         session.removeAttribute("currentUser");
         return "redirect:/";
     }

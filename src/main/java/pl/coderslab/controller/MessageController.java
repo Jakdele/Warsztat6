@@ -57,7 +57,7 @@ public class MessageController {
     public String messageDetails(@PathVariable int id, Model model, HttpSession sess) {
         Message message = messageRepository.findOne(id);
         User user = (User) sess.getAttribute("currentUser");
-        if( user == null || (user.getId()!=message.getReceiver().getId() &&  user.getId()!=message.getSender().getId())){
+        if (user == null || (user.getId() != message.getReceiver().getId() && user.getId() != message.getSender().getId())) {
             return "redirect:/";
         }
         if (user.getId() == message.getReceiver().getId()) {

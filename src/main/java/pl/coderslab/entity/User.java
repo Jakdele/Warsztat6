@@ -34,16 +34,16 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @OneToMany (mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Tweet> tweets = new ArrayList<>();
 
-    @OneToMany (mappedBy = "sender", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Message> outgoing = new ArrayList<>();
 
-    @OneToMany (mappedBy = "receiver", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Message> incoming = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     public User() {
@@ -86,7 +86,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password=password;
+        this.password = password;
 //        this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 

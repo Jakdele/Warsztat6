@@ -32,7 +32,7 @@ public class Tweet {
     @Column(columnDefinition = "Datetime default CURRENT_TIMESTAMP")
     private Date created = new Date();
 
-    @OneToMany(mappedBy = "tweet", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "tweet", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
     public Tweet() {

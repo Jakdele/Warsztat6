@@ -27,7 +27,7 @@ public class UserController {
     HashingService hashingService;
 
     @GetMapping("/tweets")
-    public String userTweets(HttpSession sess, Model model){
+    public String userTweets(HttpSession sess, Model model) {
         User currentUser = (User) sess.getAttribute("user");
         List<Tweet> userTweets = tweetRepository.findAllByUserOrderByCreatedDesc(currentUser);
         model.addAttribute("userTweets", userTweets);
@@ -35,19 +35,20 @@ public class UserController {
     }
 
     @GetMapping("/edit")
-    public String editForm( Model model,HttpSession sess){
+    public String editForm(Model model, HttpSession sess) {
         User user = (User) sess.getAttribute("currentUser");
         model.addAttribute("user", user);
         return "forms/user_edit";
 
     }
+
     @PostMapping("/edit")
-    public String editUser(@Valid User user, BindingResult result, HttpSession sess){
-        if(result.hasErrors()){
+    public String editUser(@Valid User user, BindingResult result, HttpSession sess) {
+        if (result.hasErrors()) {
             return "forms/user_edit";
         }
-        String testPassword  = userRepository.findOne(user.getId()).getPassword();
-        if(user.getPassword()!=testPassword) {
+        String testPassword = userRepository.findOne(user.getId()).getPassword();
+        if (user.getPassword() != testPassword) {
             user.setPassword(hashingService.hashPassword(user.getPassword()));
         }
         sess.setAttribute("currentUser", user);
@@ -56,7 +57,7 @@ public class UserController {
     }
 
     @RequestMapping("/details/{id}")
-    public String userDetails(@PathVariable int id, Model model){
+    public String userDetails(@PathVariable int id, Model model) {
         User showcasedUser = userRepository.findOne(id);
         List<Tweet> tweets = tweetRepository.findAllByUserOrderByCreatedDesc(showcasedUser);
         model.addAttribute("showcasedUser", showcasedUser);

@@ -19,7 +19,7 @@ public class LoginController {
     HashingService hashingService;
 
     @GetMapping("/login")
-    public String loginForm(){
+    public String loginForm() {
         return "forms/login";
     }
 

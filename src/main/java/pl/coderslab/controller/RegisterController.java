@@ -22,15 +22,15 @@ public class RegisterController {
     HashingService hashingService;
 
     @GetMapping("/register")
-    public String registerForm(@ModelAttribute User user, Model model){
+    public String registerForm(@ModelAttribute User user, Model model) {
         model.addAttribute("user", user);
         return "forms/register";
     }
 
 
     @PostMapping("/register")
-    public String registerUser(@Valid User user, BindingResult result, HttpSession sess){
-        if(result.hasErrors()){
+    public String registerUser(@Valid User user, BindingResult result, HttpSession sess) {
+        if (result.hasErrors()) {
             return "forms/register";
         }
         user.setPassword(hashingService.hashPassword(user.getPassword()));
