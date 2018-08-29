@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <form:input path="password" class="form-control" type="password" name="password"/>
+                        <input id="inputPassword" class="form-control" placeholder="Password"  type="password" name="password">
                         <form:errors path="password"/>
                         <label>Password</label>
                     </div>

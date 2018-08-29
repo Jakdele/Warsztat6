@@ -8,6 +8,7 @@
 <div class="container">
     <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
+        ${errorMsg}
         <div class="card-body">
             <form action="/login" method="post">
                 <div class="form-group">
